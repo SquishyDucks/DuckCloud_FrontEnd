@@ -7,6 +7,7 @@ const signUp = function (data) {
   console.log('data in API is ', data)
   return $.ajax({
     method: 'POST',
+    dataType: 'jsonp',
     url: config.apiUrl + '/sign-up',
     data: data
   })
@@ -16,6 +17,7 @@ const signIn = function (data) {
   console.log('data in API is ', data)
   return $.ajax({
     method: 'POST',
+    dataType: 'jsonp',
     url: config.apiUrl + '/sign-in',
     data: data
   })
