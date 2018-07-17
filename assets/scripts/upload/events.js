@@ -12,6 +12,16 @@ const onCreateUpload = function (event) {
   //   .catch(uploadUi.uploadFileFail)
 }
 
+const onGetUploads = function (event) {
+  event.preventDefault()
+  console.log('The get uploads button does something!')
+
+  uploadApi.getUploads()
+    .then(uploadUi.getUploadsSuccess)
+    .catch(uploadUi.getUploadsFail)
+}
+
 module.exports = {
-  onCreateUpload
+  onCreateUpload,
+  onGetUploads
 }
