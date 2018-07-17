@@ -10,4 +10,5 @@ $(() => {
   $('#sign-out-button').on('click', authEvents.onSignOut)
 
   $('#multipart-form-data').on('submit', uploadEvents.onCreateUpload)
+  $('.delete').on('submit', uploadEvents.onDelete)
 })
