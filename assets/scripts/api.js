@@ -7,8 +7,7 @@ const signUp = function (data) {
   console.log('data in API is ', data)
   return $.ajax({
     method: 'POST',
-    header: 'Content-Type: application/json',
-    url: 'http://localhost:4741/sign-up',
+    url: config.apiUrl + '/sign-up',
     data: data
   })
 }
@@ -17,7 +16,7 @@ const signIn = function (data) {
   console.log('data in API is ', data)
   return $.ajax({
     method: 'POST',
-    url: 'http://localhost:4741/sign-in',
+    url: config.apiUrl + '/sign-in',
     data: data
   })
 }
