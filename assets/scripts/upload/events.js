@@ -29,8 +29,19 @@ const onGetUploads = function (event) {
     .catch(uploadUi.getUploadsFail)
 }
 
+const onUpdateUpload = function (event) {
+  event.preventDefault()
+  console.log('The update uploads form does something!')
+  const data = getFormFields(event.target)
+
+  uploadApi.updateUpload(data)
+    .then(uploadUi.updateUploadSuccess)
+    .catch(uploadUi.updateUploadFail)
+}
+
 module.exports = {
   onCreateUpload,
-  onDelete,
-  onGetUploads
+  onGetUploads,
+  onUpdateUpload,
+  onDelete
 }
