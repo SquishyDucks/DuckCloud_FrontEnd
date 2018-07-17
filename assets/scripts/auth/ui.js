@@ -1,5 +1,5 @@
 'use strict'
-const store = require('./store')
+const store = require('../store')
 
 const signInSuccess = function (signInResponse) {
   console.log('signInResponse is', signInResponse)

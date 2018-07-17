@@ -1,7 +1,7 @@
 'use strict'
 
-const store = require('./store')
-const config = require('./config')
+const store = require('../store')
+const config = require('../config')
 
 const signUp = function (data) {
   console.log('data in API is ', data)
