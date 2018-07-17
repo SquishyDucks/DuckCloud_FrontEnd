@@ -24,7 +24,20 @@ const getUploads = function () {
   })
 }
 
+const updateUpload = function (data) {
+  console.log(data)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/uploads/' + data.id,
+    data: data
+    // headers: {
+    //   Authorization: 'Token token=' + store.user.token
+    // }
+  })
+}
+
 module.exports = {
   uploadFile,
-  getUploads
+  getUploads,
+  updateUpload
 }

@@ -11,4 +11,5 @@ $(() => {
 
   $('#multipart-form-data').on('submit', uploadEvents.onCreateUpload)
   $('#get-uploads-form').on('submit', uploadEvents.onGetUploads)
+  $('#update-upload-form').on('submit', uploadEvents.onUpdateUpload)
 })
