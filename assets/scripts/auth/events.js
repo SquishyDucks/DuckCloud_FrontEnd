@@ -1,13 +1,13 @@
-const getFormFields = require('../../lib/get-form-fields')
-const authUi = require('./authUi.js')
-const api = require('./api.js')
+const getFormFields = require('../../../lib/get-form-fields')
+const authUi = require('./ui.js')
+const authApi = require('./api.js')
 // const store = require('./store.js')
 
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
 
-  api.signIn(data)
+  authApi.signIn(data)
     .then(authUi.signInSuccess)
     .catch(authUi.signInFail)
 }
@@ -17,7 +17,7 @@ const onSignUp = function (event) {
   const data = getFormFields(event.target)
   console.log('data is ', data)
 
-  api.signUp(data)
+  authApi.signUp(data)
     .then(authUi.signUpSuccess)
     .catch(authUi.signUpFail)
 }
@@ -26,14 +26,14 @@ const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
 
-  api.changePassword(data)
+  authApi.changePassword(data)
     .then(authUi.changePasswordSuccess)
     .catch(authUi.changePasswordFail)
 }
 
 const onSignOut = function (event) {
   event.preventDefault()
-  api.signOut()
+  authApi.signOut()
     .then(authUi.signOutSuccess)
     .catch(authUi.signoutFail)
 }
