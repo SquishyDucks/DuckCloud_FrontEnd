@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>DuckCloud</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,23 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>DuckCloud</h1>
+      <form id="sign-in-form" class='auth'>
+         <input name="credentials[email]" class = "sign-in-email" placeholder="Sign In - Email " type="email">
+         <input name="credentials[password]" class = "sign-in-password" placeholder="Password" type="password">
+         <button type="submit" class='auth-button' id= "sign-in-submit">Sign In</button>
+       </form>
+       <form id="sign-up-form" class='auth'>
+          <input name="credentials[email]" class = "sign-up-email" placeholder="Sign Up - Email " type="email">
+          <input name="credentials[password]" class = "sign-up-password" placeholder="Password" type="password">
+          <input name="credentials[password_confirmation]" class = "sign-up-password-confirm" placeholder="Confirm Password" type="password">
+          <button type="submit" class='auth-button' id= "sign-up-submit">Sign Up</button>
+        </form>
+        <button id= 'sign-out-button' class='auth auth-button'>Sign Out</button>
+        <form id='change-password-form' class='auth'>
+          <input name='passwords[old]' class='change-password-old' placeholder='Old Password' type='password'>
+          <input name='passwords[new]' class='change-password-new' placeholder='New Password' type='password'>
+          <button type='submit' id='change-password-button' class='auth-button'>Change Password</button>
+        </form>
     </body>
 </html>
