@@ -20,7 +20,17 @@ const onDelete = function (event) {
     .catch()
 }
 
+const onGetUploads = function (event) {
+  event.preventDefault()
+  console.log('The get uploads button does something!')
+
+  uploadApi.getUploads()
+    .then(uploadUi.getUploadsSuccess)
+    .catch(uploadUi.getUploadsFail)
+}
+
 module.exports = {
   onCreateUpload,
-  onDelete
+  onDelete,
+  onGetUploads
 }

@@ -1,6 +1,7 @@
 'use strict'
 
 const config = require('../config')
+const store = require('../store')
 
 const uploadFile = function (formData) {
   console.log('data in uploadFile is ', formData)
@@ -13,6 +14,16 @@ const uploadFile = function (formData) {
   })
 }
 
+const getUploads = function () {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + '/uploads',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const deleteFile = function (data) {
   console.log('data in deleteFile is ', data)
   return $.ajax({
@@ -20,9 +31,10 @@ const deleteFile = function (data) {
     url: config.apiUrl + '/uploads/' + data.upload.id,
     data: data
   })
-}
+} 
 
 module.exports = {
   uploadFile,
-  deleteFile
+  deleteFile,
+  getUploads
 }
