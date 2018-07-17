@@ -24,7 +24,17 @@ const getUploads = function () {
   })
 }
 
+const deleteFile = function (data) {
+  console.log('data in deleteFile is ', data)
+  return $.ajax({
+    method: 'DELETE',
+    url: config.apiUrl + '/uploads/' + data.upload.id,
+    data: data
+  })
+} 
+
 module.exports = {
   uploadFile,
+  deleteFile,
   getUploads
 }
