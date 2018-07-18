@@ -50,6 +50,6 @@ const onUpdateUpload = function (event) {
 module.exports = {
   onCreateUpload,
   onGetUploads,
-  onUpdateUpload
+  onUpdateUpload,
   onDelete
 }
