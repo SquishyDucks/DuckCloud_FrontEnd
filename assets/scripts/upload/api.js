@@ -25,17 +25,17 @@ const getUploads = function () {
 }
 
 const updateUpload = function (data) {
-  console.log(data)
+  console.log('updateUpload in api.js data is ', data)
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/uploads/' + data.id,
     data: {
       title: data.title,
       tags: data.tags
+    },
+    headers: {
+      Authorization: 'Token token=' + store.user.token
     }
-    // headers: {
-    //   Authorization: 'Token token=' + store.user.token
-    // }
   })
 }
 
@@ -44,7 +44,10 @@ const deleteFile = function (data) {
   return $.ajax({
     method: 'DELETE',
     url: config.apiUrl + '/uploads/' + data.upload.id,
-    data: data
+    data: data,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
