@@ -5,6 +5,12 @@ body {
   margin: 0 5vw;
 }
 
-// .file-list-container {
-//   margin: 0 5vw;
-// }
+.file-table-cell-edit {
+
+}
+
+.file-table-cell-inactive {
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+}

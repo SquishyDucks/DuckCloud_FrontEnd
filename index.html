@@ -13,6 +13,8 @@
     </head>
     <body>
       <h1>DuckCloud</h1>
+      <div class="alerts">
+      </div>
       <!-- <div class="sign-in>" -->
       <form id="sign-in-form" class='auth'>
          <input name="credentials[email]" class = "sign-in-email" placeholder="Sign In - Email " type="email">
@@ -84,14 +86,14 @@
                   </tr>
                 </thead>
                 <tbody id='file-table-body'>
-                  <tr>
-                    <td>File Name Lorem Ipsom</td>
+                  <tr> <form>
+                    <td><input class="file-table-cell-edit" value="File Name Lorem Ipsom" /></td>
                     <td>2017-07-16</td>
                     <td>2017-07-17</td>
-                    <td>tag1, tag2</td>
+                    <td><input class="file-table-cell-edit" value="tag1, tag2" disabled="disabled"/></td>
                     <td><button type="button" class="btn-line clickable">Update</button></td>
                     <td><button type="button" class="btn-line clickable">Delete</button></td>
-                    <td><button type="button" class="btn-line clickable">View</button></td>
+                  </form>
                   </tr>
                 </tbody>
               </table>

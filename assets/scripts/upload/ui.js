@@ -4,17 +4,16 @@ const showFilesTemplate = require('../templates/file_row.handlebars')
 const view = require('./view')
 
 const checkFileOwnership = function (data) {
-  console.log('data is ', data)
-  console.log('data-owner is ', data.getAttribute('data-owner'))
+  // console.log('data is ', data)
+  // console.log('data-owner is ', data.getAttribute('data-owner'))
+  // check if data-owner attribute has empty value
   if (data.getAttribute('data-owner') === '') {
-    data.querySelectorAll('.clickable').forEach((x) => { x.classList.add('hide') })
-    // data.querySelector('delete-btn').classList.add('hide')
+    data.querySelectorAll('.editable-btn').forEach((x) => { x.classList.add('hide') })
+    // check if data-owner matches current user id
   } else if (data.getAttribute('data-owner') === store.user._id) {
   } else {
-    data.querySelectorAll('.clickable').forEach((x) => { x.classList.add('hide') })
-    // data.querySelector('delete-btn').classList.add('hide')
+    data.querySelectorAll('.editable-btn').forEach((x) => { x.classList.add('hide') })
   }
-  // debugger
 }
 
 const createFileTable = function (data) {
@@ -27,22 +26,35 @@ const createFileTable = function (data) {
   $('.view-btn').on('click', view.onViewClicked)
   // find all table row elements using class 'file-row'
   const filesCreated = document.getElementsByClassName('file-row')
-  console.log('filesCreated is ', filesCreated)
+  // console.log('filesCreated is ', filesCreated)
   // converts htmlCollection into array
   const arr = Array.prototype.slice.call(filesCreated)
-  console.log('arr is ', arr)
+  // console.log('arr is ', arr)
+  // iterate over array, pass each row as value into checkFileOwnership
   arr.forEach(function (x) {
-    console.log('x is ', x)
+    // console.log('x is ', x)
     checkFileOwnership(x)
   })
 }
 
 const uploadFileSuccess = function (uploadFileResponse) {
-  console.log('uploadFileResponse is ', uploadFileResponse)
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Sign in failed!</strong> Please make sure you typed in your credentials correctly.
+    </div>
+`)
 }
 
-const uploadFileFail = function (error) {
-  console.log('uploadFileFail is ', error)
+const uploadFileFail = function () {
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Sign in failed!</strong> Please make sure you typed in your credentials correctly.
+    </div>
+`)
 }
 
 const getUploadsSuccess = function (getUploadsResponse) {
@@ -70,6 +82,14 @@ const updateUploadFail = function (error) {
   console.log('updateUploadFail is ', error)
 }
 
+const deleteSuccess = function () {
+
+}
+
+const deleteFail = function () {
+
+}
+
 module.exports = {
   uploadFileSuccess,
   uploadFileFail,
@@ -79,5 +99,7 @@ module.exports = {
   updateUploadFail,
   createFileTable,
   getUploadSuccess,
-  getUploadFail
+  getUploadFail,
+  deleteSuccess,
+  deleteFail
 }
