@@ -1,14 +1,18 @@
 'use strict'
 const store = require('../store')
+const uploadUi = require('../upload/ui.js')
+const uploadAPI = require('../upload/api.js')
 
 const signInSuccess = function (signInResponse) {
   $('#sign-in-form input').val('')
   store.user = signInResponse.user
-  $('#sign-in-form').hide(1000)
-  $('#sign-up-form').hide(1000)
-  $('.content').show(1000)
-  $('#sign-out-button').show(1000)
-  $('#change-password-form').show(1000)
+  $('#sign-in-form').hide(500)
+  $('#sign-up-form').hide(500)
+  $('.content').show(500)
+  $('#sign-out-button').show(500)
+  $('#change-password-form').show(500)
+  uploadAPI.getUploads()
+    .then((data) => uploadUi.createFileTable(data))
 }
 
 const signInFail = function () {
@@ -26,7 +30,7 @@ const signInFail = function () {
 const signUpSuccess = function (signUpResponse) {
   $('.alerts').html('')
   $('#sign-up-form input').val('')
-  $('#sign-up-form').hide(1000)
+  $('#sign-up-form').hide(500)
   $('.alerts').html(`
     <div class="alert alert-success alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -86,11 +90,11 @@ const changePasswordFail = function () {
 
 const signOutSuccess = function (signOutResponse) {
   $('#sign-in-form input').val('')
-  $('#sign-in-form').show(1000)
-  $('#sign-up-form').show(1000)
-  $('.content').hide(1000)
-  $('#sign-out-button').hide(1000)
-  $('#change-password-form').hide(1000)
+  $('#sign-in-form').show(500)
+  $('#sign-up-form').show(500)
+  $('.content').hide(500)
+  $('#sign-out-button').hide(500)
+  $('#change-password-form').hide(500)
   $('.alerts').html('')
   $('.alerts').html(`
     <div class="alert alert-success alert-dismissible" role="alert">

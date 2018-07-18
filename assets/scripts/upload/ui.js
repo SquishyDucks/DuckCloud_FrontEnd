@@ -1,6 +1,7 @@
 'use strict'
 const store = require('../store')
 const showFilesTemplate = require('../templates/file_row.handlebars')
+const api = require('./api.js')
 const view = require('./view')
 
 const checkFileOwnership = function (data) {
@@ -38,13 +39,17 @@ const createFileTable = function (data) {
 }
 
 const uploadFileSuccess = function (uploadFileResponse) {
+  api.getUploads()
+    .then((data) => createFileTable(data))
   $('.alerts').html('')
   $('.alerts').html(`
-    <div class="alert alert-danger alert-dismissible" role="alert">
+    <div class="alert alert-success alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>Sign in failed!</strong> Please make sure you typed in your credentials correctly.
+      <strong>File Uploaded</strong>
     </div>
 `)
+  $('.alert').delay(2500).fadeOut()
+  $('#multipart-form-data input').val('')
 }
 
 const uploadFileFail = function () {
@@ -52,9 +57,10 @@ const uploadFileFail = function () {
   $('.alerts').html(`
     <div class="alert alert-danger alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>Sign in failed!</strong> Please make sure you typed in your credentials correctly.
+      <strong>Uh Oh!</strong> An error has happened! Please try uploading the file again.
     </div>
 `)
+  $('#multipart-form-data input').val('')
 }
 
 const getUploadsSuccess = function (getUploadsResponse) {
@@ -75,7 +81,16 @@ const getUploadFail = function (error) {
 }
 
 const updateUploadSuccess = function (updateUploadResponse) {
-  console.log('updateUploadResponse is ', updateUploadResponse)
+  api.getUploads()
+    .then((data) => createFileTable(data))
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Item updated successfully!
+    </div>
+  `)
+  $('.alert').delay(2500).fadeOut()
 }
 
 const updateUploadFail = function (error) {

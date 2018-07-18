@@ -22,15 +22,6 @@ const onDelete = function (event) {
     .catch(uploadUi.deleteFail)
 }
 
-const onGetUploads = function (event) {
-  event.preventDefault()
-  console.log('The get uploads button does something!')
-
-  uploadApi.getUploads()
-    .then(uploadUi.getUploadsSuccess)
-    .catch(uploadUi.getUploadsFail)
-}
-
 const onUpdateUpload = function (event) {
   event.preventDefault()
   console.log('The update uploads form does something!')
@@ -84,7 +75,6 @@ const onMakeEditable = function (event) {
 
 module.exports = {
   onCreateUpload,
-  onGetUploads,
   onUpdateUpload,
   onUpdateUpload2,
   onDelete,
