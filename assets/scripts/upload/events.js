@@ -18,8 +18,8 @@ const onDelete = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   uploadApi.deleteFile(data)
-    .then()
-    .catch()
+    .then(uploadUi.deleteSuccess)
+    .catch(uploadUi.deleteFail)
 }
 
 const onGetUploads = function (event) {
