@@ -2,6 +2,7 @@
 
 const authEvents = require('./auth/events')
 const uploadEvents = require('./upload/events')
+// const viewEvents = require('./upload/view')
 
 $(() => {
   $('#sign-in-form').on('submit', authEvents.onSignIn)
@@ -10,7 +11,11 @@ $(() => {
   $('#sign-out-button').on('click', authEvents.onSignOut)
 
   $('#multipart-form-data').on('submit', uploadEvents.onCreateUpload)
-  $('#get-uploads-form').on('submit', uploadEvents.onGetUploads)
   $('#update-upload-form').on('submit', uploadEvents.onUpdateUpload)
   $('.delete').on('submit', uploadEvents.onDelete)
+
+  $('#file-list').on('click', '.edit-btn', uploadEvents.onMakeEditable)
+  $('#file-list').on('click', '.update-btn', uploadEvents.onUpdateUpload2)
+
+  $('#delete-button').on('click', uploadEvents.onDeleteUpload)
 })

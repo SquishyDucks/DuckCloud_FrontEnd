@@ -1,44 +1,108 @@
 'use strict'
 const store = require('../store')
+const uploadUi = require('../upload/ui.js')
+const uploadAPI = require('../upload/api.js')
 
 const signInSuccess = function (signInResponse) {
-  console.log('I have successfully signed in!')
+  $('#sign-in-form input').val('')
   store.user = signInResponse.user
-  $('#sign-in-form').hide()
-  $('#sign-up-form').hide()
-  $('.content').show()
-  $('#sign-out-button').show()
-  $('#change-password-form').show()
+  $('#sign-in-form').hide(500)
+  $('#sign-up-form').hide(500)
+  $('.content').show(500)
+  $('#sign-out-button').show(500)
+  $('#change-password-form').show(500)
+  uploadAPI.getUploads()
+    .then((data) => uploadUi.createFileTable(data))
 }
 
-const signInFail = function (error) {
-  console.log('Error is ', error)
+const signInFail = function () {
+  $('#sign-in-form input').val('')
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Sign in failed!</strong> Please make sure you typed in your credentials correctly.
+    </div>
+`)
+  $('.alert').delay(2500).fadeOut()
 }
 
 const signUpSuccess = function (signUpResponse) {
-  console.log('signUpResponse is ', signUpResponse)
+  $('.alerts').html('')
+  $('#sign-up-form input').val('')
+  $('#sign-up-form').hide(500)
+  $('.alerts').html(`
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Signed up successfully!</strong> Now login with your email and password.
+    </div>
+    `)
+  $('.alert').delay(2500).fadeOut()
 }
 
-const signUpFail = function (error) {
-  console.log('signUpFail is ', error)
+const signUpFail = function () {
+  $('#sign-up-form input').val('')
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Sign up failed!</strong> This email address have been taken, please use another email address
+    </div>
+    `)
+  $('.alert').delay(2500).fadeOut()
+}
+
+const signUpFailPW = function () {
+  $('#sign-up-form input').val('')
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Sign up failed!</strong> Your password does not math your password password confirmation
+    </div>
+    `)
+  $('.alert').delay(2500).fadeOut()
 }
 
 const changePasswordSuccess = function (changePasswordResponse) {
-  console.log('changePasswordResponse is ', changePasswordResponse)
+  $('#change-password-form input').val('')
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Password updated successfully</strong>
+    </div>
+    `)
+  $('.alert').delay(2500).fadeOut()
 }
 
-const changePasswordFail = function (error) {
-  console.log('changePasswordFail is ', error)
+const changePasswordFail = function () {
+  $('#change-password-form input').val('')
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Change password failed</strong> Incorrect current password.
+    </div>
+    `)
+  $('.alert').delay(2500).fadeOut()
 }
 
 const signOutSuccess = function (signOutResponse) {
-  console.log('signOutSuccess is ', signOutResponse)
-  $('#sign-in-form').show()
-  $('#sign-up-form').show()
-  $('.content').hide()
-  $('#sign-out-button').hide()
-  $('#change-password-form').hide()
-
+  $('#sign-in-form input').val('')
+  $('#sign-in-form').show(500)
+  $('#sign-up-form').show(500)
+  $('.content').hide(500)
+  $('#sign-out-button').hide(500)
+  $('#change-password-form').hide(500)
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>You have logged out!</strong>
+    </div>
+    `)
+  $('.alert').delay(2500).fadeOut()
 }
 
 const signOutFail = function (error) {
@@ -46,12 +110,13 @@ const signOutFail = function (error) {
 }
 
 module.exports = {
-  signInSuccess: signInSuccess,
-  signInFail: signInFail,
-  signUpSuccess: signUpSuccess,
-  signUpFail: signUpFail,
-  changePasswordSuccess: changePasswordSuccess,
-  changePasswordFail: changePasswordFail,
-  signOutSuccess: signOutSuccess,
-  signOutFail: signOutFail
+  signInSuccess,
+  signInFail,
+  signUpSuccess,
+  signUpFail,
+  changePasswordSuccess,
+  changePasswordFail,
+  signOutSuccess,
+  signOutFail,
+  signUpFailPW
 }
