@@ -57,7 +57,7 @@ const deleteFile = function (data) {
 
 module.exports = {
   uploadFile,
-  deleteFile,
   getUploads,
-  updateUpload
+  updateUpload,
+  deleteFile
 }
