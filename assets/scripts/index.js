@@ -16,4 +16,6 @@ $(() => {
 
   $('#file-list').on('click', '.edit-btn', uploadEvents.onMakeEditable)
   $('#file-list').on('click', '.update-btn', uploadEvents.onUpdateUpload2)
+
+  $('#delete-button').on('click', uploadEvents.onDeleteUpload)
 })

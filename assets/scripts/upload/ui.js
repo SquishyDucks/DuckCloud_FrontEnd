@@ -2,7 +2,7 @@
 const store = require('../store')
 const showFilesTemplate = require('../templates/file_row.handlebars')
 const api = require('./api.js')
-const view = require('./view')
+const events = require('./events.js')
 
 const checkFileOwnership = function (data) {
   // console.log('data is ', data)
@@ -24,7 +24,7 @@ const createFileTable = function (data) {
   // console.log('showFilesHtml is ', showFilesHtml)
   // add the generated table rows inside the table body element
   $('#file-table-body').html(showFilesHtml)
-  $('.view-btn').on('click', view.onViewClicked)
+  $('.delete-btn').on('click', events.onClickDelete)
   // find all table row elements using class 'file-row'
   const filesCreated = document.getElementsByClassName('file-row')
   // console.log('filesCreated is ', filesCreated)
@@ -97,12 +97,12 @@ const updateUploadFail = function (error) {
   console.log('updateUploadFail is ', error)
 }
 
-const deleteSuccess = function () {
-
+const deleteUploadSuccess = function (deleteUploadResponse) {
+  console.log('deleteUploadResponse is ', deleteUploadResponse)
 }
 
-const deleteFail = function () {
-
+const deleteUploadFail = function (error) {
+  console.log('deleteUploadError is ', error)
 }
 
 module.exports = {
@@ -115,6 +115,6 @@ module.exports = {
   createFileTable,
   getUploadSuccess,
   getUploadFail,
-  deleteSuccess,
-  deleteFail
+  deleteUploadSuccess,
+  deleteUploadFail
 }

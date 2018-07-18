@@ -1,7 +1,7 @@
 const uploadUi = require('./ui.js')
 const uploadApi = require('./api.js')
 const getFormFields = require('../../../lib/get-form-fields')
-// const store = require('../store.js')
+const store = require('../store.js')
 
 const onCreateUpload = function (event) {
   event.preventDefault()
@@ -12,14 +12,6 @@ const onCreateUpload = function (event) {
   uploadApi.uploadFile(formData)
     .then(uploadUi.uploadFileSuccess)
     .catch(uploadUi.uploadFileFail)
-}
-
-const onDelete = function (event) {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  uploadApi.deleteFile(data)
-    .then(uploadUi.deleteSuccess)
-    .catch(uploadUi.deleteFail)
 }
 
 const onUpdateUpload = function (event) {
@@ -73,10 +65,29 @@ const onMakeEditable = function (event) {
   event.target.parentElement.parentElement.querySelector('.update-btn').classList.remove('hide')
 }
 
+const onClickDelete = function (event) {
+  console.log('The delete button has been clicked!')
+  const clickedId = event.target.parentNode.parentNode.getAttribute('data-id')
+  console.log('The id is ', clickedId)
+  store.clickedId = clickedId
+  console.log('The parentNode is ' + event.target.parentNode.parentNode)
+  const clickedTitle = event.target.parentNode.parentNode.firstChild
+  console.log('clickedTitle is ', clickedTitle)
+}
+
+const onDeleteUpload = function (event) {
+  const data = store.clickedId
+  console.log('data in onDeleteUpload is ', data)
+  uploadApi.deleteFile(data)
+    .then(uploadUi.deleteUploadSuccess)
+    .catch(uploadUi.deleteUploadFail)
+}
+
 module.exports = {
   onCreateUpload,
   onUpdateUpload,
   onUpdateUpload2,
-  onDelete,
-  onMakeEditable
+  onDeleteUpload,
+  onMakeEditable,
+  onClickDelete
 }

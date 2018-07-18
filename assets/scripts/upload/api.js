@@ -60,7 +60,7 @@ const deleteFile = function (data) {
   console.log('data in deleteFile is ', data)
   return $.ajax({
     method: 'DELETE',
-    url: config.apiUrl + '/uploads/' + data.upload.id,
+    url: config.apiUrl + '/uploads/' + data,
     data: data,
     headers: {
       Authorization: 'Token token=' + store.user.token
