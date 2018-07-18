@@ -39,6 +39,16 @@ const onUpdateUpload2 = function (event) {
   const data = {}
   data.id = event.target.parentElement.parentElement.getAttribute('data-id')
   data.title = event.target.parentElement.parentElement.querySelector('.file-title').value
+  if (data.title === '') {
+    $('.alerts').html(`
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Title cannot be blank.</strong> Please add a file title.
+      </div>
+      `)
+    $('.alert').delay(2500).fadeOut()
+    return
+  }
   data.tags = event.target.parentElement.parentElement.querySelector('.file-tags').value
   console.log('onUpdateUpload2 data is ', data)
   uploadApi.updateUpload(data)
