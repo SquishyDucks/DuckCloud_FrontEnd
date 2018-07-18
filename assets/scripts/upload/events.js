@@ -40,9 +40,22 @@ const onUpdateUpload = function (event) {
     .catch(uploadUi.updateUploadFail)
 }
 
+const onMakeEditable = function (event) {
+  event.preventDefault()
+  console.log('update button from file row was clicked')
+  console.log('event.target is ', event.target)
+  event.target.parentElement.parentElement.querySelectorAll('.file-table-cell-edit').forEach((x) => {
+    x.removeAttribute('disabled')
+    x.classList.remove('file-table-cell-inactive')
+  })
+  event.target.classList.add('hide')
+  event.target.parentElement.parentElement.querySelector('.update-btn').classList.remove('hide')
+}
+
 module.exports = {
   onCreateUpload,
   onGetUploads,
   onUpdateUpload,
-  onDelete
+  onDelete,
+  onMakeEditable
 }

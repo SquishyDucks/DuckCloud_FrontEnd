@@ -7,11 +7,11 @@ const checkFileOwnership = function (data) {
   // console.log('data-owner is ', data.getAttribute('data-owner'))
   // check if data-owner attribute has empty value
   if (data.getAttribute('data-owner') === '') {
-    data.querySelectorAll('.clickable').forEach((x) => { x.classList.add('hide') })
+    data.querySelectorAll('.editable-btn').forEach((x) => { x.classList.add('hide') })
     // check if data-owner matches current user id
   } else if (data.getAttribute('data-owner') === store.user._id) {
   } else {
-    data.querySelectorAll('.clickable').forEach((x) => { x.classList.add('hide') })
+    data.querySelectorAll('.editable-btn').forEach((x) => { x.classList.add('hide') })
   }
 }
 

@@ -13,4 +13,6 @@ $(() => {
   $('#get-uploads-form').on('submit', uploadEvents.onGetUploads)
   $('#update-upload-form').on('submit', uploadEvents.onUpdateUpload)
   $('.delete').on('submit', uploadEvents.onDelete)
+
+  $('#file-list').on('click', '.edit-btn', uploadEvents.onMakeEditable)
 })
