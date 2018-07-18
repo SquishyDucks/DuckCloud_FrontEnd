@@ -29,7 +29,10 @@ const updateUpload = function (data) {
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/uploads/' + data.id,
-    data: data
+    data: {
+      title: data.title,
+      tags: data.tags
+    }
     // headers: {
     //   Authorization: 'Token token=' + store.user.token
     // }
