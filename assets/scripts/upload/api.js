@@ -4,7 +4,14 @@ const config = require('../config')
 const store = require('../store')
 
 const uploadFile = function (formData) {
-  console.log('data in uploadFile is ', formData)
+  formData.append('upload[owner]', store.user._id)
+  // for (const pair of formData.entries()) {
+  //   console.log(pair[0] + ', ' + pair[1])
+  //   console.log('formData.file is ', formData.file)
+  // }
+
+  // new Response(formData).text().then(console.log)
+
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/uploads',
@@ -24,6 +31,21 @@ const getUploads = function () {
   })
 }
 
+const updateUpload = function (data) {
+  console.log(data)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/uploads/' + data.id,
+    data: {
+      title: data.title,
+      tags: data.tags
+    }
+    // headers: {
+    //   Authorization: 'Token token=' + store.user.token
+    // }
+  })
+}
+
 const deleteFile = function (data) {
   console.log('data in deleteFile is ', data)
   return $.ajax({
@@ -31,10 +53,11 @@ const deleteFile = function (data) {
     url: config.apiUrl + '/uploads/' + data.upload.id,
     data: data
   })
-} 
+}
 
 module.exports = {
   uploadFile,
-  deleteFile,
-  getUploads
+  getUploads,
+  updateUpload,
+  deleteFile
 }
