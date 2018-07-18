@@ -13,6 +13,14 @@ const onCreateUpload = function (event) {
     .catch(uploadUi.uploadFileFail)
 }
 
+const onDelete = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  uploadApi.deleteFile(data)
+    .then()
+    .catch()
+}
+
 const onGetUploads = function (event) {
   event.preventDefault()
   console.log('The get uploads button does something!')
@@ -43,4 +51,5 @@ module.exports = {
   onCreateUpload,
   onGetUploads,
   onUpdateUpload
+  onDelete
 }

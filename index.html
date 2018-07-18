@@ -50,6 +50,12 @@
           <input type="submit" name="submit" value="Upload">
         </fieldset>
       </form>
+      <form class="delete">
+        <label> Delete
+        <input type="text" name="upload[id]">
+        <input type="submit" name="submit" value="Delete">
+        </label>
+      </form>
 
       <form id="get-uploads-form">
         <button type='submit' id='get-uploads-button'>Get Uploads</button>
@@ -62,5 +68,30 @@
         <button type='submit' id='update-upload-submit'>Update Submit</button>
       </form>
 
+      <hr>
+      <div id="file-list">
+        <h3>File List</h3>
+        <table class="table table-striped" >
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Date Created</th>
+                    <th>Date Modified</th>
+                    <th>Tags</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id='file-table-body'>
+                  <tr>
+                    <td>File Name Lorem Ipsom</td>
+                    <td>2017-07-16</td>
+                    <td>2017-07-17</td>
+                    <td>tag1, tag2</td>
+                    <td><button type="button" class="btn-line clickable">Update</button></td>
+                    <td><button type="button" class="btn-line clickable">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+      </div>
     </body>
 </html>
