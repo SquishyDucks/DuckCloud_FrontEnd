@@ -51,7 +51,7 @@
             File
             <input type="file" name="upload[file]">
           </label>
-          <input type="submit" name="submit" value="Upload">
+          <button type="submit" name="submit">Submit</button>
         </fieldset>
       </form>
       <form class="delete">
@@ -60,18 +60,6 @@
         <input type="submit" name="submit" value="Delete">
         </label>
       </form>
-
-      <form id="get-uploads-form">
-        <button type='submit' id='get-uploads-button'>Get Uploads</button>
-      </form>
-
-      <form id="update-upload-form">
-        <input name='id' class='update-id' placeholder='Update ID' type='text'>
-        <input name='title' class='update-title' placeholder='Update Title' type='text'>
-        <input name='tags' class='update-tags' placeholder='Update Tags' type='text'>
-        <button type='submit' id='update-upload-submit'>Update Submit</button>
-      </form>
-    </div>
       <hr>
       <div id="file-list" class="file-list-container">
         <h3>File List</h3>
@@ -86,17 +74,9 @@
                   </tr>
                 </thead>
                 <tbody id='file-table-body'>
-                  <tr> <form>
-                    <td><input class="file-table-cell-edit" value="File Name Lorem Ipsom" /></td>
-                    <td>2017-07-16</td>
-                    <td>2017-07-17</td>
-                    <td><input class="file-table-cell-edit" value="tag1, tag2" disabled="disabled"/></td>
-                    <td><button type="button" class="btn-line clickable">Update</button></td>
-                    <td><button type="button" class="btn-line clickable">Delete</button></td>
-                  </form>
-                  </tr>
                 </tbody>
               </table>
       </div>
+    </div>
     </body>
 </html>
