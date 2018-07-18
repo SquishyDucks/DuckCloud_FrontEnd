@@ -36,11 +36,23 @@ const createFileTable = function (data) {
 }
 
 const uploadFileSuccess = function (uploadFileResponse) {
-  console.log('uploadFileResponse is ', uploadFileResponse)
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Sign in failed!</strong> Please make sure you typed in your credentials correctly.
+    </div>
+`)
 }
 
-const uploadFileFail = function (error) {
-  console.log('uploadFileFail is ', error)
+const uploadFileFail = function () {
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Sign in failed!</strong> Please make sure you typed in your credentials correctly.
+    </div>
+`)
 }
 
 const getUploadsSuccess = function (getUploadsResponse) {
@@ -60,6 +72,14 @@ const updateUploadFail = function (error) {
   console.log('updateUploadFail is ', error)
 }
 
+const deleteSuccess = function () {
+
+}
+
+const deleteFail = function () {
+
+}
+
 module.exports = {
   uploadFileSuccess,
   uploadFileFail,
@@ -67,5 +87,7 @@ module.exports = {
   getUploadsFail,
   updateUploadSuccess,
   updateUploadFail,
+  deleteSuccess,
+  deleteFail,
   createFileTable
 }
