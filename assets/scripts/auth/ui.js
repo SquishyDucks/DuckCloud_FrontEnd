@@ -2,8 +2,13 @@
 const store = require('../store')
 
 const signInSuccess = function (signInResponse) {
-  console.log('signInResponse is', signInResponse)
+  console.log('I have successfully signed in!')
   store.user = signInResponse.user
+  $('#sign-in-form').hide()
+  $('#sign-up-form').hide()
+  $('.content').show()
+  $('#sign-out-button').show()
+  $('#change-password-form').show()
 }
 
 const signInFail = function (error) {
@@ -28,6 +33,12 @@ const changePasswordFail = function (error) {
 
 const signOutSuccess = function (signOutResponse) {
   console.log('signOutSuccess is ', signOutResponse)
+  $('#sign-in-form').show()
+  $('#sign-up-form').show()
+  $('.content').hide()
+  $('#sign-out-button').hide()
+  $('#change-password-form').hide()
+
 }
 
 const signOutFail = function (error) {
