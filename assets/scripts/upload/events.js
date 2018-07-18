@@ -30,13 +30,6 @@ const onGetUploads = function (event) {
     .catch(uploadUi.getUploadsFail)
 }
 
-const updateUploadObject = {
-  'upload': {
-    'title': '',
-    'tags': ''
-  }
-}
-
 const onUpdateUpload = function (event) {
   event.preventDefault()
   console.log('The update uploads form does something!')
