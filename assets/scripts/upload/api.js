@@ -39,11 +39,6 @@ const updateUpload = function (data) {
   })
 }
 
-module.exports = {
-  uploadFile,
-  getUploads,
-  updateUpload
-
 const deleteFile = function (data) {
   console.log('data in deleteFile is ', data)
   return $.ajax({
@@ -51,10 +46,11 @@ const deleteFile = function (data) {
     url: config.apiUrl + '/uploads/' + data.upload.id,
     data: data
   })
-} 
+}
 
 module.exports = {
   uploadFile,
   deleteFile,
-  getUploads
+  getUploads,
+  updateUpload
 }

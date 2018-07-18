@@ -4,6 +4,7 @@ const store = require('../store')
 const signInSuccess = function (signInResponse) {
   console.log('signInResponse is', signInResponse)
   store.user = signInResponse.user
+  console.log('store.user is ', store.user)
 }
 
 const signInFail = function (error) {
