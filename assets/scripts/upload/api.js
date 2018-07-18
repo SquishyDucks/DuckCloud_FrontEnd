@@ -31,6 +31,16 @@ const getUploads = function () {
   })
 }
 
+const getUpload = function (data) {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + '/uploads/' + data.id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const updateUpload = function (data) {
   console.log(data)
   return $.ajax({
@@ -59,5 +69,6 @@ module.exports = {
   uploadFile,
   getUploads,
   updateUpload,
-  deleteFile
+  deleteFile,
+  getUpload
 }
