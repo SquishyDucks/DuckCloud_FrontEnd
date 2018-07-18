@@ -1,6 +1,7 @@
 'use strict'
 const store = require('../store')
 const showFilesTemplate = require('../templates/file_row.handlebars')
+const view = require('./view')
 
 const checkFileOwnership = function (data) {
   // console.log('data is ', data)
@@ -22,6 +23,7 @@ const createFileTable = function (data) {
   // console.log('showFilesHtml is ', showFilesHtml)
   // add the generated table rows inside the table body element
   $('#file-table-body').html(showFilesHtml)
+  $('.view-btn').on('click', view.onViewClicked)
   // find all table row elements using class 'file-row'
   const filesCreated = document.getElementsByClassName('file-row')
   // console.log('filesCreated is ', filesCreated)
@@ -64,6 +66,14 @@ const getUploadsFail = function (error) {
   console.log('getUploadsFail is ', error)
 }
 
+const getUploadSuccess = function (getUploadResponse) {
+  console.log('getUploadResponse is ', getUploadResponse)
+}
+
+const getUploadFail = function (error) {
+  console.log('getUploadFail is ', error)
+}
+
 const updateUploadSuccess = function (updateUploadResponse) {
   console.log('updateUploadResponse is ', updateUploadResponse)
 }
@@ -87,7 +97,9 @@ module.exports = {
   getUploadsFail,
   updateUploadSuccess,
   updateUploadFail,
+  createFileTable,
+  getUploadSuccess,
+  getUploadFail,
   deleteSuccess,
-  deleteFail,
-  createFileTable
+  deleteFail
 }

@@ -2,6 +2,7 @@
 
 const authEvents = require('./auth/events')
 const uploadEvents = require('./upload/events')
+// const viewEvents = require('./upload/view')
 
 $(() => {
   $('#sign-in-form').on('submit', authEvents.onSignIn)
