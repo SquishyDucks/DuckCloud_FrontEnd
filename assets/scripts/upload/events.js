@@ -7,6 +7,7 @@ const onCreateUpload = function (event) {
   console.log('it did something in multipart')
   const formData = new FormData(event.target)
   console.log('onUpload formData is ', formData)
+
   uploadApi.uploadFile(formData)
     .then(uploadUi.uploadFileSuccess)
     .catch(uploadUi.uploadFileFail)
@@ -29,8 +30,26 @@ const onGetUploads = function (event) {
     .catch(uploadUi.getUploadsFail)
 }
 
+const updateUploadObject = {
+  'upload': {
+    'title': '',
+    'tags': ''
+  }
+}
+
+const onUpdateUpload = function (event) {
+  event.preventDefault()
+  console.log('The update uploads form does something!')
+  const data = getFormFields(event.target)
+
+  uploadApi.updateUpload(data)
+    .then(uploadUi.updateUploadSuccess)
+    .catch(uploadUi.updateUploadFail)
+}
+
 module.exports = {
   onCreateUpload,
-  onDelete,
-  onGetUploads
+  onGetUploads,
+  onUpdateUpload
+  onDelete
 }

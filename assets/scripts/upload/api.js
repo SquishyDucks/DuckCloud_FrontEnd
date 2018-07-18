@@ -24,6 +24,26 @@ const getUploads = function () {
   })
 }
 
+const updateUpload = function (data) {
+  console.log(data)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/uploads/' + data.id,
+    data: {
+      title: data.title,
+      tags: data.tags
+    }
+    // headers: {
+    //   Authorization: 'Token token=' + store.user.token
+    // }
+  })
+}
+
+module.exports = {
+  uploadFile,
+  getUploads,
+  updateUpload
+
 const deleteFile = function (data) {
   console.log('data in deleteFile is ', data)
   return $.ajax({
