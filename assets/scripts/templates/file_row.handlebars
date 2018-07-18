@@ -1,0 +1,11 @@
+{{#each uploads as |upload|}}
+  <tr data-id="{{upload._id}}">
+    <td>{{upload.title}}</td>
+    <td>{{upload.createdAt}}</td>
+    <td>{{upload.updatedAt}}</td>
+    <td>{{upload.tags}}</td>
+    <td><button type="button" class="btn-line clickable">Update</button></td>
+    <td><button type="button" class="btn-line clickable">Delete</button></td>
+  </tr>
+
+{{/each}}

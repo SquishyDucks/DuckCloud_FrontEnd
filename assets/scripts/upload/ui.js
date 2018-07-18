@@ -1,5 +1,14 @@
 'use strict'
 
+const showFilesTemplate = require('../templates/file_row.handlebars')
+
+const createFileTable = function (data) {
+  // console.log('data inside createFileTable is ', data)
+  const showFilesHtml = showFilesTemplate({ uploads: data.uploads })
+  // console.log('showFilesHtml is ', showFilesHtml)
+  $('#file-table-body').html(showFilesHtml)
+}
+
 const uploadFileSuccess = function (uploadFileResponse) {
   console.log('uploadFileResponse is ', uploadFileResponse)
 }
@@ -10,6 +19,7 @@ const uploadFileFail = function (error) {
 
 const getUploadsSuccess = function (getUploadsResponse) {
   console.log('getUploadsResponse is ', getUploadsResponse)
+  createFileTable(getUploadsResponse)
 }
 
 const getUploadsFail = function (error) {
@@ -20,5 +30,6 @@ module.exports = {
   uploadFileSuccess,
   uploadFileFail,
   getUploadsSuccess,
-  getUploadsFail
+  getUploadsFail,
+  createFileTable
 }
