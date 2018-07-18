@@ -3,17 +3,16 @@ const store = require('../store')
 const showFilesTemplate = require('../templates/file_row.handlebars')
 
 const checkFileOwnership = function (data) {
-  console.log('data is ', data)
-  console.log('data-owner is ', data.getAttribute('data-owner'))
+  // console.log('data is ', data)
+  // console.log('data-owner is ', data.getAttribute('data-owner'))
+  // check if data-owner attribute has empty value
   if (data.getAttribute('data-owner') === '') {
     data.querySelectorAll('.clickable').forEach((x) => { x.classList.add('hide') })
-    // data.querySelector('delete-btn').classList.add('hide')
+    // check if data-owner matches current user id
   } else if (data.getAttribute('data-owner') === store.user._id) {
   } else {
     data.querySelectorAll('.clickable').forEach((x) => { x.classList.add('hide') })
-    // data.querySelector('delete-btn').classList.add('hide')
   }
-  // debugger
 }
 
 const createFileTable = function (data) {
@@ -25,12 +24,13 @@ const createFileTable = function (data) {
   $('#file-table-body').html(showFilesHtml)
   // find all table row elements using class 'file-row'
   const filesCreated = document.getElementsByClassName('file-row')
-  console.log('filesCreated is ', filesCreated)
+  // console.log('filesCreated is ', filesCreated)
   // converts htmlCollection into array
   const arr = Array.prototype.slice.call(filesCreated)
-  console.log('arr is ', arr)
+  // console.log('arr is ', arr)
+  // iterate over array, pass each row as value into checkFileOwnership
   arr.forEach(function (x) {
-    console.log('x is ', x)
+    // console.log('x is ', x)
     checkFileOwnership(x)
   })
 }
