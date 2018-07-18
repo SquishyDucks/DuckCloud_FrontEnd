@@ -1,6 +1,7 @@
 const uploadUi = require('./ui.js')
 const uploadApi = require('./api.js')
 const getFormFields = require('../../../lib/get-form-fields')
+// const store = require('../store.js')
 
 const onCreateUpload = function (event) {
   event.preventDefault()
