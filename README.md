@@ -71,3 +71,4 @@ OWNER:
 * As an owner, I want to be able to assign tags to my files.
 
 #### Wireframes
+![alt text](https://i.imgur.com/7vx4PpC.jpg)
