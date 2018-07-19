@@ -4,7 +4,7 @@ const store = require('../store')
 const config = require('../config')
 
 const signUp = function (data) {
-  console.log('data in API is ', data)
+  // console.log('data in API is ', data)
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/sign-up',
@@ -13,7 +13,7 @@ const signUp = function (data) {
 }
 
 const signIn = function (data) {
-  console.log('data in API is ', data)
+  // console.log('data in API is ', data)
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/sign-in',
