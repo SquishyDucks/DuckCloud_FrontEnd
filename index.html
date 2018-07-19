@@ -43,11 +43,11 @@
           <h3>Sign In</h3>
           <div class="form-group">
             <label for="signInInputEmail">Email address</label>
-            <input name="credentials[email]" id="signInInputEmail" class= "sign-in-email form-control" placeholder="Sign In - Email " type="email">
+            <input name="credentials[email]" id="signInInputEmail" class= "sign-in-email form-control" placeholder="Sign In - Email " type="email" required>
           </div>
           <div class="form-group">
            <label for="signInInputPassword">Password</label>
-           <input name="credentials[password]" id="signInInputPassword" class= "sign-in-password form-control" placeholder="Password" type="password">
+           <input name="credentials[password]" id="signInInputPassword" class= "sign-in-password form-control" placeholder="Password" type="password" required>
           </div>
           <button type="submit" class="auth-button btn btn-default" id= "sign-in-submit">Sign In</button>
         </form>
@@ -56,15 +56,15 @@
           <h3>Sign Up</h3>
           <div class="form-group">
             <label for="signUpInputEmail">Email address</label>
-            <input name="credentials[email]" id="signUpInputEmail" class="sign-up-email form-control" placeholder="Sign Up - Email " type="email">
+            <input name="credentials[email]" id="signUpInputEmail" class="sign-up-email form-control" placeholder="Sign Up - Email " type="email" required>
           </div>
           <div class="form-group">
             <label for="signUpInputPassword">Password</label>
-            <input name="credentials[password]" id="signUpInputPassword" class="sign-up-password form-control" placeholder="Password" type="password">
+            <input name="credentials[password]" id="signUpInputPassword" class="sign-up-password form-control" placeholder="Password" type="password" required>
           </div>
           <div class="form-group">
             <label for="signUpInputPasswordConf">Password Confirmation</label>
-            <input name="credentials[password_confirmation]" class="sign-up-password-confirm form-control" placeholder="Confirm Password" type="password">
+            <input name="credentials[password_confirmation]" class="sign-up-password-confirm form-control" placeholder="Confirm Password" type="password" required>
           </div>
 
             <button type="submit" class='auth-button btn btn-default' id= "sign-up-submit">Sign Up</button>
@@ -78,15 +78,15 @@
               <fieldset>
                 <div class="form-group upload-form">
                   <label for="uploadInputTitle">Title</label>
-                  <input id="uploadInputTitle" class="form-control" type="text" name="upload[title]">
+                  <input id="uploadInputTitle" class="form-control" placeholder="Title" type="text" name="upload[title]" required>
                 </div>
                 <div class="form-group upload-form">
                   <label for="uploadInputTags">Tags</label>
-                  <input id="uploadInputTags" class="form-control" type="text" name="upload[tags]">
+                  <input id="uploadInputTags" class="form-control" placeholder="Tags optional" type="text" name="upload[tags]">
                 </div>
                 <div class="form-group upload-form">
                   <label for="uploadInputFile">File</label>
-                  <input id="uploadInputFile" type="file" name="upload[file]">
+                  <input id="uploadInputFile" type="file" name="upload[file]" required>
                 </div>
                 <button class="btn btn-default" type="submit" name="submit">Submit</button>
               </fieldset>

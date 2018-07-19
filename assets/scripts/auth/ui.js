@@ -49,7 +49,7 @@ const signUpFail = function () {
   $('.alerts').html(`
     <div class="alert alert-danger alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>Sign up failed!</strong> This email address have been taken, please use another email address
+      <strong>Sign up failed!</strong> Please try again.
     </div>
     `)
   $('.alert').delay(2500).fadeOut()
@@ -61,7 +61,7 @@ const signUpFailPW = function () {
   $('.alerts').html(`
     <div class="alert alert-danger alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>Sign up failed!</strong> Your password does not math your password password confirmation
+      <strong>Sign up failed!</strong> Your password and password confirmation do not match.
     </div>
     `)
   $('.alert').delay(2500).fadeOut()
@@ -85,7 +85,7 @@ const changePasswordFail = function () {
   $('.alerts').html(`
     <div class="alert alert-danger alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>Change password failed</strong> Incorrect current password.
+      <strong>Change password failed</strong> Please try again.
     </div>
     `)
   $('.alert').delay(2500).fadeOut()
