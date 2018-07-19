@@ -8,7 +8,7 @@
 
 DuckCloud is a file management system allowing users to upload, store, and retrieve files. The application displays meta-data related to the files including title, creation date/time, and update date/time. Users can create, update, and delete files they own and download/view any file uploaded by any user.
 
-DuckCloud makes use of HTML, CSS, Javascript, JQuery, Handlebars, Bootstrap, Node, and Express.
+DuckCloud makes use of HTML, CSS, Javascript, JQuery, Handlebars, Bootstrap, Node, MongoDB, Mongoose, and Express.
 
 ## Development Process
 
