@@ -134,15 +134,16 @@ const deleteUploadFail = function () {
 const viewOwnSuccess = function (data) {
   $('#viewOwn').hide(200)
   $('#viewAll').show(200)
+  let newUploads = {}
   const newData = []
   for (let i = 0; data.uploads.length > i; i++) {
     if (data.uploads[i].owner === store.user._id) {
       newData.push(data.uploads[i])
     }
-    const newUploads = {uploads: newData}
+    newUploads = {uploads: newData}
     store.viewState = 'viewOwn'
-    createFileTable(newUploads)
   }
+  createFileTable(newUploads)
 }
 
 const viewALlSuccess = function (data) {
