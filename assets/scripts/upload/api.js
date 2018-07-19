@@ -17,7 +17,10 @@ const uploadFile = function (formData) {
     url: config.apiUrl + '/uploads',
     data: formData,
     processData: false,
-    contentType: false
+    contentType: false,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
