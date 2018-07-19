@@ -19,11 +19,8 @@ const checkFileOwnership = function (data) {
 const createFileTable = function (data) {
   // console.log('data inside createFileTable is ', data)
   data.uploads.forEach((x) => {
-    console.log('x is ', x)
     x.createdAt = x.createdAt.slice(0, -5).split('T').join(' — ')
     x.updatedAt = x.updatedAt.slice(0, -5).split('T').join(' — ')
-    console.log('x.createdAt is ', x.createdAt)
-    console.log('x.updatedAt is ', x.updatedAt)
   })
   // generate a table row for each file using handlebars
   const showFilesHtml = showFilesTemplate({ uploads: data.uploads })
@@ -133,12 +130,10 @@ const viewOwnSuccess = function (data) {
   const newData = []
   for (let i = 0; data.uploads.length > i; i++) {
     if (data.uploads[i].owner === store.user._id) {
-      console.log('data.uplodas[i] is ', data.uploads[i])
       newData.push(data.uploads[i])
     }
     newUploads = {uploads: newData}
     store.viewState = 'viewOwn'
-    console.log('newUploads is ', newUploads)
   }
   createFileTable(newUploads)
 }
