@@ -2,7 +2,7 @@
 const store = require('../store')
 const showFilesTemplate = require('../templates/file_row.handlebars')
 const api = require('./api.js')
-const events = require('./events.js')
+// const events = require('./events.js')
 
 const checkFileOwnership = function (data) {
   // console.log('data is ', data)
@@ -24,7 +24,7 @@ const createFileTable = function (data) {
   // console.log('showFilesHtml is ', showFilesHtml)
   // add the generated table rows inside the table body element
   $('#file-table-body').html(showFilesHtml)
-  $('.delete-btn').on('click', events.onClickDelete)
+  // $('.delete-btn').on('click', events.onClickDelete)
   // find all table row elements using class 'file-row'
   const filesCreated = document.getElementsByClassName('file-row')
   // console.log('filesCreated is ', filesCreated)

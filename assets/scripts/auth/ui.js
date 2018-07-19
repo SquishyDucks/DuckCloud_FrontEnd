@@ -11,6 +11,9 @@ const signInSuccess = function (signInResponse) {
   $('.content').show(500)
   $('#sign-out-button').show(500)
   $('#change-password-form').show(500)
+  $('.navbar-text').html('Signed in as ' + signInResponse.user.email)
+  $('.app-name-h1').hide(500)
+  $('.navbar-brand').show(500)
   uploadAPI.getUploads()
     .then((data) => uploadUi.createFileTable(data))
 }
@@ -95,6 +98,9 @@ const signOutSuccess = function (signOutResponse) {
   $('.content').hide(500)
   $('#sign-out-button').hide(500)
   $('#change-password-form').hide(500)
+  $('.app-name-h1').show(500)
+  $('.navbar-brand').hide(500)
+  $('.navbar-text').html('')
   $('.alerts').html('')
   $('.alerts').html(`
     <div class="alert alert-success alert-dismissible" role="alert">
