@@ -66,13 +66,13 @@ const onMakeEditable = function (event) {
 }
 
 const onClickDelete = function (event) {
-  // console.log('The delete button has been clicked!')
+  console.log('The delete button has been clicked!')
   const clickedId = event.target.parentNode.parentNode.getAttribute('data-id')
-  // console.log('The id is ', clickedId)
+  console.log('The id is ', clickedId)
   store.clickedId = clickedId
-  // console.log('The parentNode is ' + event.target.parentNode.parentNode)
+  console.log('The parentNode is ' + event.target.parentNode.parentNode)
   const clickedTitle = event.target.parentNode.parentNode.getElementsByTagName('td')[0].getElementsByTagName('input')[0].value
-  // console.log('clickedTitle is ', clickedTitle)
+  console.log('clickedTitle is ', clickedTitle)
   $('#modal-delete-text').text('You are about to delete ' + clickedTitle + '.')
 }
 
