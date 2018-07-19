@@ -18,6 +18,10 @@ const checkFileOwnership = function (data) {
 
 const createFileTable = function (data) {
   // console.log('data inside createFileTable is ', data)
+  data.uploads.forEach((x) => {
+    x.createdAt = x.createdAt.slice(0, -5).split('T').join(' — ')
+    x.updatedAt = x.updatedAt.slice(0, -5).split('T').join(' — ')
+  })
   // generate a table row for each file using handlebars
   const showFilesHtml = showFilesTemplate({ uploads: data.uploads })
   // console.log('showFilesHtml is ', showFilesHtml)
