@@ -47,7 +47,7 @@ const uploadFileSuccess = function (uploadFileResponse) {
     </div>
 `)
   $('.alert').delay(2500).fadeOut()
-  $('#multipart-form-data input').val('')
+  $('.butter input').val('')
 }
 
 const uploadFileFail = function () {
@@ -58,7 +58,7 @@ const uploadFileFail = function () {
       <strong>Uh Oh!</strong> An error has happened! Please try uploading the file again.
     </div>
 `)
-  $('#multipart-form-data input').val('')
+  $('.butter input').val('')
 }
 
 const updateUploadSuccess = function (updateUploadResponse) {

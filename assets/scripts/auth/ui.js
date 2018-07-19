@@ -4,7 +4,7 @@ const uploadUi = require('../upload/ui.js')
 const uploadAPI = require('../upload/api.js')
 
 const signInSuccess = function (signInResponse) {
-  $('#sign-in-form input').val('')
+  $('.butter input').val('')
   store.user = signInResponse.user
   $('#sign-in-form').hide(500)
   $('#sign-up-form').hide(500)
@@ -19,7 +19,7 @@ const signInSuccess = function (signInResponse) {
 }
 
 const signInFail = function () {
-  $('#sign-in-form input').val('')
+  $('.butter input').val('')
   $('.alerts').html('')
   $('.alerts').html(`
     <div class="alert alert-danger alert-dismissible" role="alert">
@@ -32,8 +32,7 @@ const signInFail = function () {
 
 const signUpSuccess = function (signUpResponse) {
   $('.alerts').html('')
-  $('#sign-up-form input').val('')
-  $('#sign-up-form').hide(500)
+  $('.butter input').val('')
   $('.alerts').html(`
     <div class="alert alert-success alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -44,7 +43,7 @@ const signUpSuccess = function (signUpResponse) {
 }
 
 const signUpFail = function () {
-  $('#sign-up-form input').val('')
+  $('.butter input').val('')
   $('.alerts').html('')
   $('.alerts').html(`
     <div class="alert alert-danger alert-dismissible" role="alert">
@@ -56,7 +55,7 @@ const signUpFail = function () {
 }
 
 const signUpFailPW = function () {
-  $('#sign-up-form input').val('')
+  $('.butter input').val('')
   $('.alerts').html('')
   $('.alerts').html(`
     <div class="alert alert-danger alert-dismissible" role="alert">
@@ -68,7 +67,7 @@ const signUpFailPW = function () {
 }
 
 const changePasswordSuccess = function (changePasswordResponse) {
-  $('#change-password-form input').val('')
+  $('.butter input').val('')
   $('.alerts').html('')
   $('.alerts').html(`
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -80,7 +79,7 @@ const changePasswordSuccess = function (changePasswordResponse) {
 }
 
 const changePasswordFail = function () {
-  $('#change-password-form input').val('')
+  $('.butter input').val('')
   $('.alerts').html('')
   $('.alerts').html(`
     <div class="alert alert-danger alert-dismissible" role="alert">
@@ -92,7 +91,7 @@ const changePasswordFail = function () {
 }
 
 const signOutSuccess = function (signOutResponse) {
-  $('#sign-in-form input').val('')
+  $('.butter input').val('')
   $('#sign-in-form').show(500)
   $('#sign-up-form').show(500)
   $('.content').hide(500)
