@@ -14,76 +14,86 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>DuckCloud</h1>
-      <div class="alerts">
-      </div>
-      <!-- <div class="sign-in>" -->
-      <form id="sign-in-form" class="auth sign-up-sign-in col-md-6">
-        <h3>Sign In</h3>
-        <div class="form-group">
-          <label for="signInInputEmail">Email address</label>
-         <input name="credentials[email]" id="signInInputEmail" class= "sign-in-email form-control" placeholder="Sign In - Email " type="email">
-       </div>
-       <div class="form-group">
-         <label for="signInInputPassword">Password</label>
-         <input name="credentials[password]" id="signInInputPassword" class= "sign-in-password form-control" placeholder="Password" type="password">
-       </div>
-         <button type="submit" class="auth-button btn btn-default" id= "sign-in-submit">Sign In</button>
-       </form>
-     <!-- </div> -->
-       <form id="sign-up-form" class="auth sign-up-sign-in col-md-6">
-         <h3>Sign Up</h3>
-         <div class="form-group">
-           <label for="signUpInputEmail">Email address</label>
-          <input name="credentials[email]" id="signUpInputEmail" class="sign-up-email form-control" placeholder="Sign Up - Email " type="email">
-        </div>
-        <div class="form-group">
-          <label for="signUpInputPassword">Password</label>
-          <input name="credentials[password]" id="signUpInputPassword" class="sign-up-password form-control" placeholder="Password" type="password">
-        </div>
-        <div class="form-group">
-          <label for="signUpInputPasswordConf">Password Confirmation</label>
-          <input name="credentials[password_confirmation]" class="sign-up-password-confirm form-control" placeholder="Confirm Password" type="password">
-        </div>
-          <button type="submit" class='auth-button btn btn-default' id= "sign-up-submit">Sign Up</button>
-        </form>
-        <button id= 'sign-out-button' class='auth auth-button btn btn-default' style="display: none;">Sign Out</button>
-        <form id='change-password-form' class='auth' style="display: none;">
-          <input name='passwords[old]' class='change-password-old' placeholder='Old Password' type='password' required>
-          <input name='passwords[new]' class='change-password-new' placeholder='New Password' type='password' required>
-          <button type='submit' id='change-password-button' class='auth-button btn btn-default'>Change Password</button>
-        </form>
-        <hr>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" style="display: none;">DuckCloud</a>
+            <p class="navbar-text"></p>
+          </div>
+          <div class="navbar-right navbar-signout">
+            <form id='change-password-form' class='auth nav-change-pw butter' style="display: none;">
+              <input name='passwords[old]' class='change-password-old' placeholder='Old Password' type='password' required>
+              <input name='passwords[new]' class='change-password-new' placeholder='New Password' type='password' required>
+              <button type='submit' id='change-password-button' class='auth-button btn btn-default'>Change Password</button>
+            </form>
+            <button id= 'sign-out-button' class='auth auth-button btn btn-default' style="display: none;">Sign Out</button>
+          </div>
+          <!-- <div class="navbar-right navbar-changepw">
 
-        <div class="content" style='display: none;'>
+          </div> -->
 
-        <form id="multipart-form-data" class="form-inline" enctype="multipart/form-data">
-        <h3>Upload File</h3>
-        <fieldset>
-          <div class="form-group upload-form">
-            <label for="uploadInputTitle">Title</label>
-            <input id="uploadInputTitle" class="form-control" type="text" name="upload[title]">
+        </div>
+      </nav>
+      <div class="main-container">
+        <h1 class="app-name-h1">DuckCloud</h1>
+        <div class="alerts">
+        </div>
+
+        <form id="sign-in-form" class="auth sign-up-sign-in col-md-6 butter">
+          <h3>Sign In</h3>
+          <div class="form-group">
+            <label for="signInInputEmail">Email address</label>
+            <input name="credentials[email]" id="signInInputEmail" class= "sign-in-email form-control" placeholder="Sign In - Email " type="email" required>
           </div>
-          <div class="form-group upload-form">
-            <label for="uploadInputTags">Tags</label>
-            <input id="uploadInputTags" class="form-control" type="text" name="upload[tags]">
+          <div class="form-group">
+           <label for="signInInputPassword">Password</label>
+           <input name="credentials[password]" id="signInInputPassword" class= "sign-in-password form-control" placeholder="Password" type="password" required>
           </div>
-          <div class="form-group upload-form">
-            <label for="uploadInputFile">File</label>
-            <input id="uploadInputFile" type="file" name="upload[file]">
+          <button type="submit" class="auth-button btn btn-default" id= "sign-in-submit">Sign In</button>
+        </form>
+
+        <form id="sign-up-form" class="auth sign-up-sign-in col-md-6 butter">
+          <h3>Sign Up</h3>
+          <div class="form-group">
+            <label for="signUpInputEmail">Email address</label>
+            <input name="credentials[email]" id="signUpInputEmail" class="sign-up-email form-control" placeholder="Sign Up - Email " type="email" required>
           </div>
-          <button class="btn btn-default" type="submit" name="submit">Submit</button>
-        </fieldset>
-      </form>
-      <form class="delete">
-        <label> Delete
-        <input type="text" name="upload[id]" required>
-        <input type="submit" name="submit" value="Delete">
-        </label>
-      </form>
-      <div id="file-list" class="file-list-container">
-        <h3>File List</h3>
-        <table class="table table-striped" >
+          <div class="form-group">
+            <label for="signUpInputPassword">Password</label>
+            <input name="credentials[password]" id="signUpInputPassword" class="sign-up-password form-control" placeholder="Password" type="password" required>
+          </div>
+          <div class="form-group">
+            <label for="signUpInputPasswordConf">Password Confirmation</label>
+            <input name="credentials[password_confirmation]" class="sign-up-password-confirm form-control" placeholder="Confirm Password" type="password" required>
+          </div>
+
+            <button type="submit" class='auth-button btn btn-default' id= "sign-up-submit">Sign Up</button>
+          </form>
+
+
+
+          <div class="content" style='display: none;'>
+            <form id="multipart-form-data" class="form-inline upload-form-container butter" enctype="multipart/form-data">
+              <h3>Upload File</h3>
+              <fieldset>
+                <div class="form-group upload-form">
+                  <label for="uploadInputTitle">Title</label>
+                  <input id="uploadInputTitle" class="form-control" placeholder="Title" type="text" name="upload[title]" required>
+                </div>
+                <div class="form-group upload-form">
+                  <label for="uploadInputTags">Tags</label>
+                  <input id="uploadInputTags" class="form-control" placeholder="Tags optional" type="text" name="upload[tags]">
+                </div>
+                <div class="form-group upload-form">
+                  <label for="uploadInputFile">File</label>
+                  <input id="uploadInputFile" type="file" name="upload[file]" required>
+                </div>
+                <button class="btn btn-default" type="submit" name="submit">Submit</button>
+              </fieldset>
+           </form>
+       <div id="file-list" class="file-list-container">
+          <h3>File List</h3>
+          <table class="table table-striped">
                 <thead>
                   <tr>
                     <th>Title</th>
@@ -96,34 +106,32 @@
                 <tbody id='file-table-body'>
                 </tbody>
               </table>
-      </div>
-    </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="deleteModal" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Are you sure?</h4>
-            </div>
-            <div class="modal-body">
-              <p>You are about to delete</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" id='delete-button'>Yes</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
           </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Are you sure?</h4>
+              </div>
+              <div class="modal-body">
+                <p id='modal-delete-text'>You are about to delete</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id='delete-button'>Yes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
 
-    </div>
 
-    </div>
     </body>
 </html>
-

@@ -17,7 +17,10 @@ const uploadFile = function (formData) {
     url: config.apiUrl + '/uploads',
     data: formData,
     processData: false,
-    contentType: false
+    contentType: false,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
@@ -42,7 +45,7 @@ const getUpload = function (data) {
 }
 
 const updateUpload = function (data) {
-  console.log('updateUpload in api.js data is ', data)
+  // console.log('updateUpload in api.js data is ', data)
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/uploads/' + data.id,
@@ -57,7 +60,7 @@ const updateUpload = function (data) {
 }
 
 const deleteFile = function (data) {
-  console.log('data in deleteFile is ', data)
+  // console.log('data in deleteFile is ', data)
   return $.ajax({
     method: 'DELETE',
     url: config.apiUrl + '/uploads/' + data,

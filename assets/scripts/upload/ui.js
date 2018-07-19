@@ -2,7 +2,6 @@
 const store = require('../store')
 const showFilesTemplate = require('../templates/file_row.handlebars')
 const api = require('./api.js')
-const events = require('./events.js')
 
 const checkFileOwnership = function (data) {
   // console.log('data is ', data)
@@ -24,7 +23,6 @@ const createFileTable = function (data) {
   // console.log('showFilesHtml is ', showFilesHtml)
   // add the generated table rows inside the table body element
   $('#file-table-body').html(showFilesHtml)
-  $('.delete-btn').on('click', events.onClickDelete)
   // find all table row elements using class 'file-row'
   const filesCreated = document.getElementsByClassName('file-row')
   // console.log('filesCreated is ', filesCreated)
@@ -49,7 +47,7 @@ const uploadFileSuccess = function (uploadFileResponse) {
     </div>
 `)
   $('.alert').delay(2500).fadeOut()
-  $('#multipart-form-data input').val('')
+  $('.butter input').val('')
 }
 
 const uploadFileFail = function () {
@@ -60,24 +58,7 @@ const uploadFileFail = function () {
       <strong>Uh Oh!</strong> An error has happened! Please try uploading the file again.
     </div>
 `)
-  $('#multipart-form-data input').val('')
-}
-
-const getUploadsSuccess = function (getUploadsResponse) {
-  console.log('getUploadsResponse is ', getUploadsResponse)
-  createFileTable(getUploadsResponse)
-}
-
-const getUploadsFail = function (error) {
-  console.log('getUploadsFail is ', error)
-}
-
-const getUploadSuccess = function (getUploadResponse) {
-  console.log('getUploadResponse is ', getUploadResponse)
-}
-
-const getUploadFail = function (error) {
-  console.log('getUploadFail is ', error)
+  $('.butter input').val('')
 }
 
 const updateUploadSuccess = function (updateUploadResponse) {
@@ -93,28 +74,40 @@ const updateUploadSuccess = function (updateUploadResponse) {
   $('.alert').delay(2500).fadeOut()
 }
 
-const updateUploadFail = function (error) {
-  console.log('updateUploadFail is ', error)
+const updateUploadFail = function () {
 }
 
 const deleteUploadSuccess = function (deleteUploadResponse) {
-  console.log('deleteUploadResponse is ', deleteUploadResponse)
+  api.getUploads()
+    .then((data) => createFileTable(data))
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Item deleted successfully!
+    </div>
+  `)
+  $('.alert').delay(2500).fadeOut()
 }
 
-const deleteUploadFail = function (error) {
-  console.log('deleteUploadError is ', error)
+const deleteUploadFail = function () {
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Error! Please try delete again.
+    </div>
+  `)
+  $('.alert').delay(2500).fadeOut()
 }
 
 module.exports = {
   uploadFileSuccess,
+  checkFileOwnership,
+  createFileTable,
   uploadFileFail,
-  getUploadsSuccess,
-  getUploadsFail,
   updateUploadSuccess,
   updateUploadFail,
-  createFileTable,
-  getUploadSuccess,
-  getUploadFail,
   deleteUploadSuccess,
   deleteUploadFail
 }
