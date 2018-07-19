@@ -111,8 +111,16 @@ const signOutSuccess = function (signOutResponse) {
   $('.alert').delay(2500).fadeOut()
 }
 
-const signOutFail = function (error) {
-  console.log('signOutFail is ', error)
+const signOutFail = function () {
+  // console.log('signOutFail is ', error)
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Failed to log out.</strong>
+    </div>
+    `)
+  $('.alert').delay(2500).fadeOut()
 }
 
 module.exports = {

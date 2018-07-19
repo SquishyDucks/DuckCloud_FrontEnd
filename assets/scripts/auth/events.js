@@ -15,7 +15,7 @@ const onSignIn = function (event) {
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('data is ', data)
+  // console.log('data is ', data)
   if (data.credentials.password !== data.credentials.password_confirmation) {
     authUi.signUpFailPW()
   } else {
@@ -29,7 +29,6 @@ const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   if (data.passwords.old === data.passwords.new) {
-    console.log('NO!')
     $('#change-password-form input').val('')
     $('.alerts').html('')
     $('.alerts').html(`
@@ -41,7 +40,6 @@ const onChangePassword = function (event) {
     $('.alert').delay(2500).fadeOut()
     return
   }
-
 
   authApi.changePassword(data)
     .then(authUi.changePasswordSuccess)
