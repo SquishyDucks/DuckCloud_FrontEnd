@@ -4,11 +4,11 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 body {
   font-size: 16px;
   font-family: 'Roboto Condensed', sans-serif;
-  margin: 0 5vw;
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 54px;
+  padding: 0 15px;
 }
 
 h3 {
@@ -16,6 +16,28 @@ h3 {
 }
 
 input[type="file"] {
+  display: inline-block;
+}
+
+.alerts {
+  padding: 0 15px;
+}
+
+.content {
+  padding: 0 15px;
+}
+
+.main-container {
+  margin: 0 5vw;
+}
+
+.navbar-signout {
+  margin-right: 20px;
+  padding-top: 8px;
+}
+
+.nav-change-pw {
+  margin-right: 50px;
   display: inline-block;
 }
 
@@ -32,4 +54,8 @@ input[type="file"] {
 
 .upload-form {
   padding-right: 20px;
+}
+
+.upload-form-container {
+  margin-bottom: 80px;
 }
