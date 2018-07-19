@@ -28,6 +28,20 @@ const onSignUp = function (event) {
 const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
+  if (data.passwords.old === data.passwords.new) {
+    console.log('NO!')
+    $('#change-password-form input').val('')
+    $('.alerts').html('')
+    $('.alerts').html(`
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>New password must not match old password</strong>
+      </div>
+      `)
+    $('.alert').delay(2500).fadeOut()
+    return
+  }
+
 
   authApi.changePassword(data)
     .then(authUi.changePasswordSuccess)
