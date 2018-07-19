@@ -54,32 +54,20 @@ half hour of effort, we opened an issue in the General Assembly project queue.
 
 USER:
 As an unregistered user, I want to sign up with an email and password.
-
 As a registered user, I want to sign in with my email and password.
-
 As a registered user, I want to change my password to a new password.
-
 As a registered user, I want to sign out.
-
 As a registered user, I want to be able to view and download all files on the server.
-
 As a registered user, I want to see the date and time that a file was created/modified.
 
 OWNER:
 
 As an owner, I want to upload a file.
-
 As an owner, I want to update my files.
-
 As an owner, I want to delete my files.
-
-
 As an owner, I want to create folders for my files.
-
 As an owner, I want to update a folder.
-
 As an owner, I want to delete a folder.
-
 As an owner, I want to be able to assign tags to my files.
 
 #### Wireframes
