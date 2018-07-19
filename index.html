@@ -19,7 +19,17 @@
           <div class="navbar-header">
             <a class="navbar-brand">DuckCloud</a>
           </div>
-          <div class="navbar-right navbar-signout"><button id= 'sign-out-button' class='auth auth-button btn btn-default' style="display: none;">Sign Out</button></div>
+          <div class="navbar-right navbar-signout">
+            <form id='change-password-form' class='auth nav-change-pw' style="display: none;">
+              <input name='passwords[old]' class='change-password-old' placeholder='Old Password' type='password' required>
+              <input name='passwords[new]' class='change-password-new' placeholder='New Password' type='password' required>
+              <button type='submit' id='change-password-button' class='auth-button btn btn-default'>Change Password</button>
+            </form>
+            <button id= 'sign-out-button' class='auth auth-button btn btn-default' style="display: none;">Sign Out</button>
+          </div>
+          <!-- <div class="navbar-right navbar-changepw">
+
+          </div> -->
 
         </div>
       </nav>
@@ -58,14 +68,10 @@
             <button type="submit" class='auth-button btn btn-default' id= "sign-up-submit">Sign Up</button>
           </form>
 
-          <form id='change-password-form' class='auth' style="display: none;">
-            <input name='passwords[old]' class='change-password-old' placeholder='Old Password' type='password' required>
-            <input name='passwords[new]' class='change-password-new' placeholder='New Password' type='password' required>
-            <button type='submit' id='change-password-button' class='auth-button btn btn-default'>Change Password</button>
-          </form>
+
 
           <div class="content" style='display: none;'>
-            <form id="multipart-form-data" class="form-inline" enctype="multipart/form-data">
+            <form id="multipart-form-data" class="form-inline upload-form-container" enctype="multipart/form-data">
               <h3>Upload File</h3>
               <fieldset>
                 <div class="form-group upload-form">
@@ -83,12 +89,12 @@
                 <button class="btn btn-default" type="submit" name="submit">Submit</button>
               </fieldset>
             </form>
-            <form class="delete">
+            <!-- <form class="delete">
               <label> Delete
                 <input type="text" name="upload[id]" required>
                 <input type="submit" name="submit" value="Delete">
               </label>
-            </form>
+            </form> -->
             <div id="file-list" class="file-list-container">
               <h3>File List</h3>
               <table class="table table-striped" >

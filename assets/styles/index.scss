@@ -8,6 +8,7 @@ body {
 
 h1 {
   font-size: 48px;
+  padding: 0 15px;
 }
 
 h3 {
@@ -27,6 +28,11 @@ input[type="file"] {
   padding-top: 8px;
 }
 
+.nav-change-pw {
+  margin-right: 50px;
+  display: inline-block;
+}
+
 .file-table-cell-inactive {
   background-color: transparent;
   border: 0;
@@ -40,4 +46,8 @@ input[type="file"] {
 
 .upload-form {
   padding-right: 20px;
+}
+
+.upload-form-container {
+  margin-bottom: 80px;
 }
