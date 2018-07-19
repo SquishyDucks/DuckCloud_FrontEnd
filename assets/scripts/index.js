@@ -19,4 +19,7 @@ $(() => {
   $('#file-list').on('click', '.delete-btn', uploadEvents.onClickDelete)
 
   $('#delete-button').on('click', uploadEvents.onDeleteUpload)
+
+  $('#viewOwn').on('click', uploadEvents.onViewOwn)
+  $('#viewAll').on('click', uploadEvents.onViewAll)
 })

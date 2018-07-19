@@ -84,11 +84,25 @@ const onDeleteUpload = function (event) {
     .catch(uploadUi.deleteUploadFail)
 }
 
+const onViewOwn = function (event) {
+  uploadApi.getUploads()
+    .then(uploadUi.viewOwnSuccess)
+    .catch()
+}
+
+const onViewAll = function (event) {
+  uploadApi.getUploads()
+    .then(uploadUi.viewALlSuccess)
+    .catch()
+}
+
 module.exports = {
   onCreateUpload,
   onUpdateUpload,
   onUpdateUpload2,
   onDeleteUpload,
   onMakeEditable,
-  onClickDelete
+  onClickDelete,
+  onViewOwn,
+  onViewAll
 }
