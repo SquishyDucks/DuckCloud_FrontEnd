@@ -16,11 +16,6 @@ const signInSuccess = function (signInResponse) {
   $('.navbar-brand').show(500)
   uploadAPI.getUploads()
     .then((data) => uploadUi.createFileTable(data))
-  $('.navbar-nav').append(`
-      <li class="nav-item active">
-        <button id= 'sign-out-button' class='auth auth-button' style="display: none;">Sign Out</button>
-      </li>
-    `)
 }
 
 const signInFail = function () {
