@@ -75,6 +75,14 @@ const updateUploadSuccess = function (updateUploadResponse) {
 }
 
 const updateUploadFail = function () {
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Item could not be updated.
+    </div>
+  `)
+  $('.alert').delay(2500).fadeOut()
 }
 
 const deleteUploadSuccess = function (deleteUploadResponse) {
