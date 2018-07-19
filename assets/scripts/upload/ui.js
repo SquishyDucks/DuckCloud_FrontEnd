@@ -61,23 +61,6 @@ const uploadFileFail = function () {
   $('#multipart-form-data input').val('')
 }
 
-const getUploadsSuccess = function (getUploadsResponse) {
-  console.log('getUploadsResponse is ', getUploadsResponse)
-  createFileTable(getUploadsResponse)
-}
-
-const getUploadsFail = function (error) {
-  console.log('getUploadsFail is ', error)
-}
-
-const getUploadSuccess = function (getUploadResponse) {
-  console.log('getUploadResponse is ', getUploadResponse)
-}
-
-const getUploadFail = function (error) {
-  console.log('getUploadFail is ', error)
-}
-
 const updateUploadSuccess = function (updateUploadResponse) {
   api.getUploads()
     .then((data) => createFileTable(data))
@@ -91,28 +74,40 @@ const updateUploadSuccess = function (updateUploadResponse) {
   $('.alert').delay(2500).fadeOut()
 }
 
-const updateUploadFail = function (error) {
-  console.log('updateUploadFail is ', error)
+const updateUploadFail = function () {
 }
 
 const deleteUploadSuccess = function (deleteUploadResponse) {
-  console.log('deleteUploadResponse is ', deleteUploadResponse)
+  api.getUploads()
+    .then((data) => createFileTable(data))
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Item deleted successfully!
+    </div>
+  `)
+  $('.alert').delay(2500).fadeOut()
 }
 
-const deleteUploadFail = function (error) {
-  console.log('deleteUploadError is ', error)
+const deleteUploadFail = function () {
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Error! Please try delete again.
+    </div>
+  `)
+  $('.alert').delay(2500).fadeOut()
 }
 
 module.exports = {
   uploadFileSuccess,
+  checkFileOwnership,
+  createFileTable,
   uploadFileFail,
-  getUploadsSuccess,
-  getUploadsFail,
   updateUploadSuccess,
   updateUploadFail,
-  createFileTable,
-  getUploadSuccess,
-  getUploadFail,
   deleteUploadSuccess,
   deleteUploadFail
 }
