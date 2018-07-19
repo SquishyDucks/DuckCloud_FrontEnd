@@ -38,7 +38,13 @@ const createFileTable = function (data) {
 
 const uploadFileSuccess = function (uploadFileResponse) {
   api.getUploads()
-    .then((data) => createFileTable(data))
+    .then(function (data) {
+      if (store.viewState === 'viewAll') {
+        createFileTable(data)
+      } else {
+        viewOwnSuccess(data)
+      }
+    })
   $('.alerts').html('')
   $('.alerts').html(`
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -63,7 +69,13 @@ const uploadFileFail = function () {
 
 const updateUploadSuccess = function (updateUploadResponse) {
   api.getUploads()
-    .then((data) => createFileTable(data))
+    .then(function (data) {
+      if (store.viewState === 'viewAll') {
+        createFileTable(data)
+      } else {
+        viewOwnSuccess(data)
+      }
+    })
   $('.alerts').html('')
   $('.alerts').html(`
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -79,7 +91,13 @@ const updateUploadFail = function () {
 
 const deleteUploadSuccess = function (deleteUploadResponse) {
   api.getUploads()
-    .then((data) => createFileTable(data))
+    .then(function (data) {
+      if (store.viewState === 'viewAll') {
+        createFileTable(data)
+      } else {
+        viewOwnSuccess(data)
+      }
+    })
   $('.alerts').html('')
   $('.alerts').html(`
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -101,6 +119,27 @@ const deleteUploadFail = function () {
   $('.alert').delay(2500).fadeOut()
 }
 
+const viewOwnSuccess = function (data) {
+  $('#viewOwn').hide(200)
+  $('#viewAll').show(200)
+  const newData = []
+  for (let i = 0; data.uploads.length > i; i++) {
+    if (data.uploads[i].owner === store.user._id) {
+      newData.push(data.uploads[i])
+    }
+    const newUploads = {uploads: newData}
+    store.viewState = 'viewOwn'
+    createFileTable(newUploads)
+  }
+}
+
+const viewALlSuccess = function (data) {
+  $('#viewAll').hide(200)
+  $('#viewOwn').show(200)
+  store.viewState = 'viewAll'
+  createFileTable(data)
+}
+
 module.exports = {
   uploadFileSuccess,
   checkFileOwnership,
@@ -109,5 +148,7 @@ module.exports = {
   updateUploadSuccess,
   updateUploadFail,
   deleteUploadSuccess,
-  deleteUploadFail
+  deleteUploadFail,
+  viewOwnSuccess,
+  viewALlSuccess
 }

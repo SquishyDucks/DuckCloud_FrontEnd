@@ -6,6 +6,8 @@ const uploadAPI = require('../upload/api.js')
 const signInSuccess = function (signInResponse) {
   $('.butter input').val('')
   store.user = signInResponse.user
+  store.viewState = 'viewAll'
+  $('#viewAll').hide(200)
   $('#sign-in-form').hide(500)
   $('#sign-up-form').hide(500)
   $('.content').show(500)
@@ -17,6 +19,7 @@ const signInSuccess = function (signInResponse) {
   uploadAPI.getUploads()
     .then((data) => uploadUi.createFileTable(data))
 }
+// uploadUi.createFileTable(data)
 
 const signInFail = function () {
   $('.butter input').val('')
