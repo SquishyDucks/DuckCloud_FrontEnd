@@ -87,13 +87,13 @@ const onDeleteUpload = function (event) {
 const onViewOwn = function (event) {
   uploadApi.getUploads()
     .then(uploadUi.viewOwnSuccess)
-    .catch()
+    .catch(uploadUi.viewOwnFail)
 }
 
 const onViewAll = function (event) {
   uploadApi.getUploads()
-    .then(uploadUi.viewALlSuccess)
-    .catch()
+    .then(uploadUi.viewAllSuccess)
+    .catch(uploadUi.viewAllFail)
 }
 
 module.exports = {
