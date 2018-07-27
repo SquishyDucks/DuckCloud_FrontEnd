@@ -146,11 +146,33 @@ const viewOwnSuccess = function (data) {
   createFileTable(newUploads)
 }
 
-const viewALlSuccess = function (data) {
+const viewOwnFail = function () {
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Error! Please try again.
+    </div>
+  `)
+  $('.alert').delay(2500).fadeOut()
+}
+
+const viewAllSuccess = function (data) {
   $('#viewAll').hide(200)
   $('#viewOwn').show(200)
   store.viewState = 'viewAll'
   createFileTable(data)
+}
+
+const viewAllFail = function () {
+  $('.alerts').html('')
+  $('.alerts').html(`
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Error! Please try again.
+    </div>
+  `)
+  $('.alert').delay(2500).fadeOut()
 }
 
 module.exports = {
@@ -163,5 +185,7 @@ module.exports = {
   deleteUploadSuccess,
   deleteUploadFail,
   viewOwnSuccess,
-  viewALlSuccess
+  viewAllSuccess,
+  viewOwnFail,
+  viewAllFail
 }
