@@ -2,6 +2,7 @@
 
 const authEvents = require('./auth/events')
 const uploadEvents = require('./upload/events')
+const sort = require('./upload/sort')
 // const viewEvents = require('./upload/view')
 
 $(() => {
@@ -22,4 +23,6 @@ $(() => {
 
   $('#viewOwn').on('click', uploadEvents.onViewOwn)
   $('#viewAll').on('click', uploadEvents.onViewAll)
+
+  $('#sort-button').on('click', sort.onSortTable)
 })
