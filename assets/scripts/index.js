@@ -25,4 +25,5 @@ $(() => {
   $('#viewAll').on('click', uploadEvents.onViewAll)
 
   $('#sort-button').on('click', sort.onSortTable)
+  $('#table-heading').on('click', sort.onSortTable)
 })
