@@ -24,6 +24,9 @@ $(() => {
   $('#viewOwn').on('click', uploadEvents.onViewOwn)
   $('#viewAll').on('click', uploadEvents.onViewAll)
 
-  $('#sort-button').on('click', sort.onSortTable)
-  $('#table-heading').on('click', sort.onSortTable)
+  // $('#sort-button').on('click', sort.onSortTable)
+  $('#table-heading').on('click', sort.onSortTitle)
+  $('#date-created-heading').on('click', sort.onSortDateCreated)
+  $('#date-modified-heading').on('click', sort.onSortDateModified)
+  $('#tags-heading').on('click', sort.onSortTags)
 })

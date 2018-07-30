@@ -1,5 +1,20 @@
-const onSortTable = function () {
-  console.log('sort button was clicked!')
+const onSortTitle = function () {
+  onSortTable(0)
+}
+const onSortDateCreated = function () {
+  onSortTable(1)
+}
+
+const onSortDateModified = function () {
+  onSortTable(2)
+}
+
+const onSortTags = function () {
+  onSortTable(3)
+}
+
+const onSortTable = function (heading) {
+  console.log('a heading was clicked!')
   let table, rows, switching, i, x, y, shouldSwitch
   table = document.getElementById('the-table')
   switching = true
@@ -16,8 +31,8 @@ const onSortTable = function () {
       shouldSwitch = false
       /* Get the two elements you want to compare,
       one from current row and one from the next: */
-      x = rows[i].getElementsByTagName('TD')[0]
-      y = rows[i + 1].getElementsByTagName('TD')[0]
+      x = rows[i].getElementsByTagName('TD')[heading]
+      y = rows[i + 1].getElementsByTagName('TD')[heading]
       // Check if the two rows should switch place:
       if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
         // If so, mark as a switch and break the loop:
@@ -35,5 +50,9 @@ const onSortTable = function () {
 }
 
 module.exports = {
-  onSortTable
+  onSortTable,
+  onSortTitle,
+  onSortDateCreated,
+  onSortDateModified,
+  onSortTags
 }
