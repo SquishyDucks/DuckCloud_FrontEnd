@@ -14,7 +14,6 @@ const onSortTags = function () {
 }
 
 const onSortTable = function (heading) {
-  console.log('a heading was clicked!')
   let rows, i, x, y, shouldSwitch
   const table = document.getElementById('the-table')
   let switching = true
